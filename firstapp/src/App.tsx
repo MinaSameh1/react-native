@@ -8,33 +8,32 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native'
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'dark'
 
-  return <>
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: isDarkMode ? 'black' : 'white',
+    },
+    font: {
+      color: isDarkMode ? '#fff' : '#000',
+    },
+  })
+
+  return (
     <View style={styles.container}>
-      <Text>This is a test!</Text>
-      <Text>This is a test 2.0!</Text>
+      <Text style={styles.font}>This is a test!</Text>
+      <Text style={styles.font}>This is a test 2.0!</Text>
+      <Text style={styles.font}>
+        {isDarkMode ? 'This is dark mode' : 'This is light mode'}
+      </Text>
     </View>
-  </>
-};
+  )
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  }
-});
-
-export default App;
+export default App
