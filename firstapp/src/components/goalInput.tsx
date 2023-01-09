@@ -36,8 +36,15 @@ export const GoalInput = (props: Props) => {
         style={{ ...styles.inputText, color: backgroundStyle.color }}
         placeholder="Write your goal here"
         onChangeText={handleInput}
+        value={goalEntered}
       />
-      <Button title="add item" onPress={() => props.handleAdd(goalEntered)} />
+      <Button
+        title="add item"
+        onPress={() => {
+          props.handleAdd(goalEntered)
+          setGoalEntered('')
+        }}
+      />
     </View>
   )
 }
