@@ -6,7 +6,7 @@ import { colors } from './config'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
-  const [goals, setGoals] = useState<Array<Record<string, string>>>([])
+  const [goals, setGoals] = useState<Array<{ text: string; _id: string }>>([])
 
   function addGoalHandler(txt: string) {
     if (txt === '') return
@@ -14,6 +14,10 @@ const App = () => {
       ...currentGoals,
       { text: txt, _id: Math.random().toString() }
     ])
+  }
+
+  function deleteGoalHandler(id: string) {
+    setGoals(currentGoals => currentGoals.filter(item => item._id !== id))
   }
 
   const backgroundStyle = {
@@ -29,7 +33,12 @@ const App = () => {
         <FlatList
           data={goals}
           renderItem={items => (
-            <Item value={items.item.text} color={backgroundStyle.color} />
+            <Item
+              value={items.item.text}
+              id={items.item._id}
+              color={backgroundStyle.color}
+              onPress={deleteGoalHandler}
+            />
           )}
           keyExtractor={(item, _index) => item._id}
         />

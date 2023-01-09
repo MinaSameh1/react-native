@@ -1,11 +1,14 @@
-import { StyleSheet, Text, useColorScheme, View } from 'react-native'
+import { Pressable, StyleSheet, Text, useColorScheme, View } from 'react-native'
 import { colors } from '../config'
 
 interface Props {
   value: string
+  id: string
   color: string
+  onPress: (id: string) => void
 }
-export const Item = ({ value, color }: Props) => {
+
+export const Item = ({ value, color, onPress, id }: Props) => {
   const isDarkMode = useColorScheme() === 'dark'
   return (
     <View
@@ -13,7 +16,9 @@ export const Item = ({ value, color }: Props) => {
         ...styles.goalItem,
         backgroundColor: isDarkMode ? colors.purple : colors.lightpurple
       }}>
-      <Text style={{ color: color }}>{value}</Text>
+      <Pressable android_ripple={{ color: '#5ff' }} onPress={() => onPress(id)}>
+        <Text style={{ color: color }}>{value}</Text>
+      </Pressable>
     </View>
   )
 }
