@@ -7,17 +7,12 @@ import { colors } from './config'
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
   const [goals, setGoals] = useState<Array<Record<string, string>>>([])
-  const [goalEntered, setGoalEntered] = useState('')
 
-  function handleInput(txt: string) {
-    setGoalEntered(txt)
-  }
-
-  function addGoalHandler() {
-    if (goalEntered === '') return
+  function addGoalHandler(txt: string) {
+    if (txt === '') return
     setGoals(currentGoals => [
       ...currentGoals,
-      { text: goalEntered, _id: Math.random().toString() }
+      { text: txt, _id: Math.random().toString() }
     ])
   }
 
@@ -29,7 +24,7 @@ const App = () => {
 
   return (
     <View style={{ ...styles.container, ...backgroundStyle }}>
-      <GoalInput handleInput={handleInput} handleButton={addGoalHandler} />
+      <GoalInput handleAdd={addGoalHandler} />
       <View style={styles.listContainer}>
         <FlatList
           data={goals}

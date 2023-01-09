@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   View,
   TextInput,
@@ -8,12 +9,16 @@ import {
 import { colors } from '../config'
 
 interface Props {
-  handleInput: (txt: string) => void
-  handleButton: () => void
+  handleAdd: (text: string) => void
 }
 
 export const GoalInput = (props: Props) => {
   const isDarkMode = useColorScheme() === 'dark'
+  const [goalEntered, setGoalEntered] = useState('')
+
+  function handleInput(txt: string) {
+    setGoalEntered(txt)
+  }
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? colors.dark : colors.light,
@@ -30,9 +35,9 @@ export const GoalInput = (props: Props) => {
       <TextInput
         style={{ ...styles.inputText, color: backgroundStyle.color }}
         placeholder="Write your goal here"
-        onChangeText={props.handleInput}
+        onChangeText={handleInput}
       />
-      <Button title="add item" onPress={props.handleButton} />
+      <Button title="add item" onPress={() => props.handleAdd(goalEntered)} />
     </View>
   )
 }
