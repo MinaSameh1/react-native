@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { FlatList, StyleSheet, useColorScheme, View } from 'react-native'
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  useColorScheme,
+  View
+} from 'react-native'
 import { GoalInput } from './components/goalInput'
 import { Item } from './components/item'
 import { colors } from './config'
@@ -7,6 +13,7 @@ import { colors } from './config'
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
   const [goals, setGoals] = useState<Array<{ text: string; _id: string }>>([])
+  const [showModal, setShowModal] = useState(false)
 
   function addGoalHandler(txt: string) {
     if (txt === '') return
@@ -14,11 +21,15 @@ const App = () => {
       ...currentGoals,
       { text: txt, _id: Math.random().toString() }
     ])
+    setShowModal(modal => !modal)
+    closeModal
   }
 
   function deleteGoalHandler(id: string) {
     setGoals(currentGoals => currentGoals.filter(item => item._id !== id))
   }
+
+  const closeModal = () => setShowModal(modal => !modal)
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? colors.dark : colors.light,
@@ -28,7 +39,14 @@ const App = () => {
 
   return (
     <View style={{ ...styles.container, ...backgroundStyle }}>
-      <GoalInput handleAdd={addGoalHandler} />
+      <Button title="Add Item" onPress={() => setShowModal(model => !model)} />
+      {showModal && (
+        <GoalInput
+          visible={showModal}
+          close={closeModal}
+          handleAdd={addGoalHandler}
+        />
+      )}
       <View style={styles.listContainer}>
         <FlatList
           data={goals}
