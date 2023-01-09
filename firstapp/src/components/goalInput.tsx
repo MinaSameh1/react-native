@@ -16,22 +16,36 @@ interface Props {
 }
 
 export const GoalInput = (props: Props) => {
+  const isDarkMode = useColorScheme() === 'dark'
   const [goalEntered, setGoalEntered] = useState('')
 
   function handleInput(txt: string) {
     setGoalEntered(txt)
   }
 
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? colors.purple : colors.lightpurple,
+    color: isDarkMode ? colors.light : colors.dark,
+    borderBottomColor: isDarkMode ? colors.lightpink : colors.dark
+  }
+
   return (
-    <Modal animationType="slide" visible={props.visible}>
-      <View style={styles.inputContainer}>
+    <Modal animationType="slide" visible={props.visible} transparent>
+      <View
+        style={{
+          ...styles.inputContainer,
+          backgroundColor: backgroundStyle.backgroundColor
+        }}>
         <TextInput
-          style={styles.inputText}
+          style={{ ...styles.inputText, color: backgroundStyle.color }}
           placeholder="Write your goal here"
           onChangeText={handleInput}
           value={goalEntered}
         />
         <View style={styles.buttons}>
+          <View style={styles.button}>
+            <Button title="cancel" onPress={props.close} color="#f57" />
+          </View>
           <View style={styles.button}>
             <Button
               title="add item"
@@ -40,9 +54,6 @@ export const GoalInput = (props: Props) => {
                 setGoalEntered('')
               }}
             />
-          </View>
-          <View style={styles.button}>
-            <Button title="cancel" onPress={props.close} />
           </View>
         </View>
       </View>
@@ -53,7 +64,6 @@ export const GoalInput = (props: Props) => {
 const styles = StyleSheet.create({
   inputText: {
     borderWidth: 1,
-    color: '#000',
     borderColor: colors.blue,
     width: '80%',
     marginRight: 8
