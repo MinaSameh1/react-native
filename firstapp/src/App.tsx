@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
-import {
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  useColorScheme,
-  View
-} from 'react-native'
+import { FlatList, StyleSheet, useColorScheme, View } from 'react-native'
+import { GoalInput } from './components/goalInput'
+import { Item } from './components/item'
 import { colors } from './config'
 
 const App = () => {
@@ -16,7 +9,7 @@ const App = () => {
   const [goals, setGoals] = useState<Array<Record<string, string>>>([])
   const [goalEntered, setGoalEntered] = useState('')
 
-  function inputHandler(txt: string) {
+  function handleInput(txt: string) {
     setGoalEntered(txt)
   }
 
@@ -36,31 +29,12 @@ const App = () => {
 
   return (
     <View style={{ ...styles.container, ...backgroundStyle }}>
-      <View
-        style={{
-          ...styles.inputContainer,
-          borderBottomColor: backgroundStyle.borderBottomColor
-        }}>
-        <TextInput
-          style={{ ...styles.inputText, color: backgroundStyle.color }}
-          placeholder="Write your goal here"
-          onChangeText={inputHandler}
-        />
-        <Button title="add item" onPress={addGoalHandler} />
-      </View>
+      <GoalInput handleInput={handleInput} handleButton={addGoalHandler} />
       <View style={styles.listContainer}>
         <FlatList
           data={goals}
-          renderItem={Items => (
-            <View
-              style={{
-                ...styles.goalItem,
-                backgroundColor: isDarkMode ? colors.purple : colors.lightpurple
-              }}>
-              <Text style={{ color: backgroundStyle.color }}>
-                {Items.item.text}
-              </Text>
-            </View>
+          renderItem={items => (
+            <Item value={items.item.text} color={backgroundStyle.color} />
           )}
           keyExtractor={(item, _index) => item._id}
         />
@@ -78,21 +52,6 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 10,
     padding: 20
-  },
-  inputText: {
-    borderWidth: 1,
-    borderColor: colors.blue,
-    width: '70%',
-    marginRight: 8
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-    paddingBottom: 20,
-    borderBottomWidth: 1
   },
   goalItem: {
     margin: 5,
