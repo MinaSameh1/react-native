@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Alert,
   Button,
   FlatList,
   StyleSheet,
@@ -29,6 +30,26 @@ const App = () => {
     setGoals(currentGoals => currentGoals.filter(item => item._id !== id))
   }
 
+  function onItemPress(id: string) {
+    Alert.alert(
+      'Item',
+      'Select what you want to do',
+      [
+        {
+          text: 'Delete',
+          onPress: () => deleteGoalHandler(id)
+        },
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        }
+      ],
+      {
+        cancelable: true
+      }
+    )
+  }
+
   const closeModal = () => setShowModal(modal => !modal)
 
   const backgroundStyle = {
@@ -55,7 +76,7 @@ const App = () => {
               value={items.item.text}
               id={items.item._id}
               color={backgroundStyle.color}
-              onPress={deleteGoalHandler}
+              onPress={onItemPress}
             />
           )}
           keyExtractor={(item, _index) => item._id}
