@@ -17,7 +17,7 @@ export const Item = ({ value, color, onPress, id }: Props) => {
         backgroundColor: isDarkMode ? colors.purple : colors.lightpurple
       }}>
       <Pressable android_ripple={{ color: '#5ff' }} onPress={() => onPress(id)}>
-        <Text style={{ color: color }}>{value}</Text>
+        <Text style={[{ color: color }, styles.text]}>{value}</Text>
       </Pressable>
     </View>
   )
@@ -26,7 +26,9 @@ export const Item = ({ value, color, onPress, id }: Props) => {
 const styles = StyleSheet.create({
   goalItem: {
     margin: 5,
-    padding: 10,
     borderRadius: 5
+  },
+  text: {
+    padding: 10
   }
 })
