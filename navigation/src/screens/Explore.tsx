@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { ItemCard } from '../components/ItemCard'
+import { Menu } from '../components/Menu'
 
 const ExploreScreen = () => {
   return (
@@ -20,6 +21,7 @@ const ExploreScreen = () => {
           <ItemCard name="chicken" />
         </View>
       </View>
+      <Menu />
     </View>
   )
 }
