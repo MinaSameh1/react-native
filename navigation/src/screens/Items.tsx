@@ -1,18 +1,76 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { ItemCard } from '../components/ItemCard'
 import { Menu } from '../components/Menu'
+import { RootStackParams } from '../main'
 
-export default function ItemsScreen() {
+type Props = NativeStackScreenProps<RootStackParams, 'ItemInfo'>
+
+export default function ItemsScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Items Screen</Text>
       <ScrollView>
-        <ItemCard name="test item" />
-        <ItemCard name="microphone" />
-        <ItemCard name="food i guess" />
-        <ItemCard name="test 2" />
-        <ItemCard name="speaker" />
-        <ItemCard name="chicken" />
+        <ItemCard
+          name="test item"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'test item',
+              info: 'An item that added for testing',
+              price: 30.0
+            })
+          }}
+        />
+        <ItemCard
+          name="microphone"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'microphone',
+              info: 'a great microphone',
+              price: 34.1
+            })
+          }}
+        />
+        <ItemCard
+          name="food i guess"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'food i guess',
+              info: 'this is food, meant to be eaten',
+              price: 500
+            })
+          }}
+        />
+        <ItemCard
+          name="test 2"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'test 2',
+              info: 'Great test',
+              price: 13.5
+            })
+          }}
+        />
+        <ItemCard
+          name="speaker"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'speaker',
+              info: 'Great speaker has high sound quality',
+              price: 10.4
+            })
+          }}
+        />
+        <ItemCard
+          name="chicken"
+          onPress={() => {
+            navigation.navigate('ItemInfo', {
+              name: 'chicken',
+              info: 'this is food, meant to be eaten',
+              price: 500
+            })
+          }}
+        />
       </ScrollView>
       <Menu />
     </View>

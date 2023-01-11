@@ -1,15 +1,18 @@
-import { View, Text, StyleSheet, ViewStyle } from 'react-native'
+import { View, Text, StyleSheet, ViewStyle, Pressable } from 'react-native'
 
 interface Props {
   name: string
   style?: ViewStyle
+  onPress?: () => void
 }
 
 export const ItemCard: React.FC<Props> = props => {
   return (
-    <View style={[styles.container, props.style]}>
-      <Text style={styles.text}>{props.name}</Text>
-    </View>
+    <Pressable onPress={props.onPress}>
+      <View style={[styles.container, props.style]}>
+        <Text style={styles.text}>{props.name}</Text>
+      </View>
+    </Pressable>
   )
 }
 
