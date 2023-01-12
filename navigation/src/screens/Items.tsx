@@ -2,9 +2,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { ItemCard } from '../components/ItemCard'
 import { Menu } from '../components/Menu'
-import { RootStackParams } from '../main'
+import { RootStackParams } from '../types/rootStack.type'
 
-type Props = NativeStackScreenProps<RootStackParams, 'ItemInfo'>
+type Props = NativeStackScreenProps<RootStackParams, 'ItemInfoScreen'>
 
 export default function ItemsScreen({ navigation }: Props) {
   return (
@@ -14,7 +14,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="test item"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'test item',
               info: 'An item that added for testing',
               price: 30.0
@@ -24,7 +24,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="microphone"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'microphone',
               info: 'a great microphone',
               price: 34.1
@@ -34,7 +34,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="food i guess"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'food i guess',
               info: 'this is food, meant to be eaten',
               price: 500
@@ -44,7 +44,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="test 2"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'test 2',
               info: 'Great test',
               price: 13.5
@@ -54,7 +54,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="speaker"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'speaker',
               info: 'Great speaker has high sound quality',
               price: 10.4
@@ -64,7 +64,7 @@ export default function ItemsScreen({ navigation }: Props) {
         <ItemCard
           name="chicken"
           onPress={() => {
-            navigation.navigate('ItemInfo', {
+            navigation.navigate('ItemInfoScreen', {
               name: 'chicken',
               info: 'this is food, meant to be eaten',
               price: 500
