@@ -6,7 +6,6 @@ import {
   useColorModeValue,
   VStack
 } from 'native-base'
-import ToggleMode from '../components/ToggleMode'
 import { UserInput } from '../components/UserInput'
 import { Line } from '../ui/Line'
 import { StatusBar } from '../ui/StatusBar'
