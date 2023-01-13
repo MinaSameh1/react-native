@@ -1,4 +1,5 @@
-import { Input, Text, VStack } from 'native-base'
+import { Text, VStack } from 'native-base'
+import { PasswordInput } from '../ui/PasswordInput'
 
 interface Props {
   name: string
@@ -6,7 +7,7 @@ interface Props {
   placeholder?: string
 }
 
-export const UserInput = ({ name, onChange, placeholder }: Props) => {
+export const UserPasswordInput = ({ name, onChange, placeholder }: Props) => {
   return (
     <VStack paddingTop={5}>
       <Text
@@ -16,7 +17,7 @@ export const UserInput = ({ name, onChange, placeholder }: Props) => {
         color={'gray.500'}>
         {name}
       </Text>
-      <Input
+      <PasswordInput
         variant="outline"
         _dark={{ backgroundColor: 'primaryDark.550' }}
         borderRadius={5}
