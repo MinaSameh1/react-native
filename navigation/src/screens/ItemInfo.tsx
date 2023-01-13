@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginTop: 6,
-    fontWeight: 'bold',
-    color: '#000'
+    fontWeight: 'bold'
   }
 })
 
