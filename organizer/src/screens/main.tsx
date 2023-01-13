@@ -1,20 +1,16 @@
-import { Text, Center, useColorModeValue, VStack } from 'native-base'
-import ToggleMode from '../components/ToggleMode'
-import { UserInput } from '../components/UserInput'
+import { useCallback } from 'react'
+import { onThemeChangeHandler } from '../common/handlers/onThemeChange'
+import { LoginScreen } from './LoginScreen'
+import { useFocusEffect } from '@react-navigation/native'
+import { useColorMode } from 'native-base'
 
 export const MainScreen = () => {
-  const bg = useColorModeValue('primaryLight.600', 'primaryDark.600')
-  const textColor = useColorModeValue('black', 'white')
-
-  return (
-    <Center flex={1} bg={bg}>
-      <VStack flex={1} bg={bg}>
-        <Text fontSize={24} color={textColor}>
-          Hello, World!
-        </Text>
-        <UserInput name="Username" />
-        <ToggleMode />
-      </VStack>
-    </Center>
+  const { colorMode, toggleColorMode } = useColorMode()
+  useFocusEffect(
+    useCallback(() => {
+      const handler = onThemeChangeHandler(colorMode, toggleColorMode)
+      return () => handler.remove()
+    }, [toggleColorMode, colorMode])
   )
+  return <LoginScreen />
 }
