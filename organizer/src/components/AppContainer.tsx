@@ -1,5 +1,6 @@
 import { NativeBaseProvider } from 'native-base'
 import { NavigationContainer } from '@react-navigation/native'
+import '../common/firebase/firebase'
 import React from 'react'
 import theme from '../config/theme'
 

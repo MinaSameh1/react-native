@@ -3,11 +3,15 @@ import { PasswordInput } from '../ui/PasswordInput'
 
 interface Props {
   name: string
-  onChange?: () => void
+  onChangeText?: (txt: string) => void
   placeholder?: string
 }
 
-export const UserPasswordInput = ({ name, onChange, placeholder }: Props) => {
+export const UserPasswordInput = ({
+  name,
+  onChangeText,
+  placeholder
+}: Props) => {
   return (
     <VStack paddingTop={5}>
       <Text
@@ -22,7 +26,7 @@ export const UserPasswordInput = ({ name, onChange, placeholder }: Props) => {
         _dark={{ backgroundColor: 'primaryDark.550' }}
         borderRadius={5}
         borderColor={'gray.500'}
-        onChange={onChange}
+        onChangeText={onChangeText}
         placeholder={placeholder}
       />
     </VStack>
