@@ -1,6 +1,9 @@
 import { useNavigation } from '@react-navigation/core'
+import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { View, StyleSheet, Pressable, Text } from 'react-native'
+import { useCallback } from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
+import backHandler from '../common/handlers/backHandler'
 import { useTheme } from '../common/hooks/theme.hook'
 import { RootStackParams } from '../types/rootStack.type'
 
@@ -10,6 +13,13 @@ interface Props {
 
 export const Menu: React.FC<Props> = ({ currentScreen }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
+
+  useFocusEffect(
+    useCallback(() => {
+      const backEventHandlerSubscriper = backHandler(navigation)
+      return () => backEventHandlerSubscriper.remove()
+    }, [navigation])
+  )
 
   const theme = useTheme()
 
