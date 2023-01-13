@@ -52,13 +52,13 @@ export const LoginScreen: React.FC<Props> = _props => {
           marginTop={5}
           marginBottom={5}>
           <Button bg="gray.600" flex={1}>
-            <Icon name="apple1" size={24} />
+            <Icon name="apple1" color="#fff" size={24} />
           </Button>
           <Button bg="#3B5998" flex={1}>
-            <Icon name="facebook-square" size={24} />
+            <Icon name="facebook-square" color="#fff" size={24} />
           </Button>
           <Button bg="#4385F4" flex={1}>
-            <Icon name="google" size={24} />
+            <Icon name="google" color="#fff" size={24} />
           </Button>
         </HStack>
         <Text
