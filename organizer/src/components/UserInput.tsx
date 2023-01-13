@@ -7,12 +7,14 @@ interface Props {
 
 export const UserInput = ({ name, onChange }: Props) => {
   return (
-    <VStack>
+    <VStack paddingTop={5}>
       <Text fontStyle={'normal'} color={'gray.500'}>
         {name}
       </Text>
       <Input
         _dark={{ backgroundColor: 'primaryDark.550' }}
+        borderRadius={5}
+        borderColor={'gray.500'}
         onChange={onChange}
       />
     </VStack>
