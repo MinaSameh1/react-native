@@ -5,9 +5,5 @@ export const onThemeChangeHandler = (
   toggleColorMode: () => void
 ) =>
   Appearance.addChangeListener(perf => {
-    if (
-      (perf.colorScheme === 'light' && colorMode === 'dark') ||
-      (perf.colorScheme === 'dark' && colorMode === 'light')
-    )
-      toggleColorMode()
+    if (perf.colorScheme !== colorMode) toggleColorMode()
   })
