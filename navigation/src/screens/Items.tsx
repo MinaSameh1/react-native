@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
+import { useTheme } from '../common/hooks/theme.hook'
 import { ItemCard } from '../components/ItemCard'
 import { Menu } from '../components/Menu'
 import { RootStackParams } from '../types/rootStack.type'
@@ -7,9 +8,11 @@ import { RootStackParams } from '../types/rootStack.type'
 type Props = NativeStackScreenProps<RootStackParams, 'ItemsScreen'>
 
 export default function ItemsScreen({ navigation }: Props) {
+  const theme = useTheme()
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Items Screen</Text>
+      <Text style={[styles.text, theme]}>Items Screen</Text>
       <ScrollView>
         <ItemCard
           name="test item"
@@ -72,7 +75,7 @@ export default function ItemsScreen({ navigation }: Props) {
           }}
         />
       </ScrollView>
-      <Menu />
+      <Menu currentScreen="ItemsScreen" />
     </View>
   )
 }
@@ -83,7 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   text: {
-    color: '#000',
     padding: 16,
     fontSize: 28,
     fontWeight: 'bold'

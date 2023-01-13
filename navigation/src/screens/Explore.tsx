@@ -90,7 +90,7 @@ const ExploreScreen = ({ navigation }: Props) => {
             />
           </View>
         </View>
-        <Menu />
+        <Menu currentScreen="Explore" />
       </ScrollView>
     </View>
   )

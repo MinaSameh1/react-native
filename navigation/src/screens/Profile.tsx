@@ -11,7 +11,7 @@ export default function Profile() {
         <Button title="Edit Profile" />
       </View>
       <View>
-        <Menu />
+        <Menu currentScreen="Profile" />
       </View>
     </View>
   )
