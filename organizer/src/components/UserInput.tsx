@@ -8,7 +8,11 @@ interface Props {
 export const UserInput = ({ name, onChange }: Props) => {
   return (
     <VStack paddingTop={5}>
-      <Text fontStyle={'normal'} color={'gray.500'}>
+      <Text
+        paddingLeft={3}
+        paddingBottom={1}
+        fontStyle={'normal'}
+        color={'gray.500'}>
         {name}
       </Text>
       <Input
