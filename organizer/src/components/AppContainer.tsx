@@ -1,4 +1,6 @@
 import { NativeBaseProvider } from 'native-base'
+import { NavigationContainer } from '@react-navigation/native'
+import React from 'react'
 import theme from '../config/theme'
 
 interface Props {
@@ -6,7 +8,9 @@ interface Props {
 }
 
 export const AppContainer: React.FC<Props> = ({ children }) => (
-  <NativeBaseProvider theme={theme}>{children}</NativeBaseProvider>
+  <NavigationContainer>
+    <NativeBaseProvider theme={theme}>{children}</NativeBaseProvider>
+  </NavigationContainer>
 )
 
 export default AppContainer
