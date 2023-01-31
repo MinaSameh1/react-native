@@ -1,21 +1,16 @@
-import { StatusBar, StatusBarStyle } from 'react-native'
-import useColorModeValue from '../common/hooks/useColorModeValue'
+import { NavigationContainer } from '@react-navigation/native'
+import { Provider as PaperProvider } from 'react-native-paper'
 
 interface Props {
   children: React.ReactNode
 }
 
 export const AppContainer = ({ children }: Props) => {
-  const statusBarStyle = useColorModeValue<StatusBarStyle>(
-    'dark-content',
-    'light-content'
-  )
-  const color = useColorModeValue('#fff', '#000')
-
   return (
     <>
-      <StatusBar backgroundColor={color} barStyle={statusBarStyle} />
-      {children}
+      <NavigationContainer>
+        <PaperProvider>{children}</PaperProvider>
+      </NavigationContainer>
     </>
   )
 }
