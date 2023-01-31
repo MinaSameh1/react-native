@@ -11,7 +11,9 @@ const App = () => {
     <AppContainer>
       <CustomStatusBar />
       <SafeAreaProvider style={{ backgroundColor: color }}>
-        <Text style={{ color: textColor }}>Hello World!</Text>
+        <Text style={{ color: textColor }} testID="text">
+          Hello World!
+        </Text>
       </SafeAreaProvider>
     </AppContainer>
   )
