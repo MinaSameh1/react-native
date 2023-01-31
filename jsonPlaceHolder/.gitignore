@@ -4,6 +4,7 @@
 
 *.keystore
 !debug.keystore
+.jest/
 # Xcode
 #
 build/
