@@ -1,5 +1,5 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
-import { HomeScreen } from '../screen/HomeScreen'
+import { HomeScreen } from '../screens/HomeScreen'
 
 type BotTabNav = {
   Home: undefined

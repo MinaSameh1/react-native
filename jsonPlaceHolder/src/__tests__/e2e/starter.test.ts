@@ -1,4 +1,4 @@
-import { by, device, expect, element } from 'detox';
+import { by, device, expect, element } from 'detox'
 
 describe('Example', () => {
   beforeAll(async () => {
@@ -9,11 +9,11 @@ describe('Example', () => {
     await device.reloadReactNative()
   })
 
-  it('should have welcome screen', async () => {
+  it('should not have welcome screen', async () => {
     await expect(element(by.id('welcome'))).not.toBeVisible()
   })
 
-  it('should show  ', async () => {
-    await expect(element(by.id('text'))).toBeVisible()
+  it('should show text', async () => {
+    await expect(element(by.text('this is home'))).toBeVisible()
   })
 })

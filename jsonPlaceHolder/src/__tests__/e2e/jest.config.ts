@@ -1,6 +1,9 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 export default {
   rootDir: '..',
+  transform: {
+    '\\.[jt]sx?$': 'ts-jest'
+  },
   testMatch: ['<rootDir>/e2e/**/*.test.ts'],
   testTimeout: 120000,
   maxWorkers: 1,
