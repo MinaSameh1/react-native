@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, import/no-extraneous-dependencies */
+// /* eslint-disable no-undef, import/no-extraneous-dependencies */
 // import { configure } from '@testing-library/react-native'
 
 // Import Jest Native matchers
@@ -11,3 +11,4 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 // configure({
 //   defaultIncludeHiddenElements: false
 // })
+export {}
